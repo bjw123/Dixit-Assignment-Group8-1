@@ -2,13 +2,13 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const PORT = 3030
 const mongo = require('./services/MongoService')
+const routers = require('./routes')
 
 let app = new express();
-app.use(express.static(__dirname + "./public/index.html"));
+app.use(express.static(__dirname + "/public/"));
 app.use(bodyParser.json());
-app.get("/",(req, res) => {
-    
-})
+
+app.use('/createProfile', routers.creatProfile.createProfileRoute)
 
 
 //setup database
